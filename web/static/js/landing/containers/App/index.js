@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, IndexLink } from 'react-router';
 
 export default class App extends React.Component {
   render() {
@@ -6,10 +7,11 @@ export default class App extends React.Component {
       <header className="header">
         <nav role="navigation">
           <ul className="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <li><Link className="btn" to="/auth/login">Login</Link></li>
+            <li><Link className="btn" to="/auth/register">Register</Link></li>
           </ul>
         </nav>
-        <span className="logo"></span>
+        <IndexLink to="/"><span className="logo"></span></IndexLink>
       </header>
       {this.props.children}
     </div>;

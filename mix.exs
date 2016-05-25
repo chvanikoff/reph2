@@ -18,8 +18,9 @@ defmodule Reph.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Reph, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :std_json_io]]
+     applications: [:phoenix, :phoenix_html, :cowboy,
+       :logger, :gettext, :phoenix_ecto, :postgrex,
+       :std_json_io, :guardian, :comeonin]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,7 +38,10 @@ defmodule Reph.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
-     {:std_json_io, "~> 0.1"}]
+     {:std_json_io, "~> 0.1"},
+     {:comeonin, "~> 2.4"},
+     {:guardian, "~> 0.11"},
+     {:guardian_db, "~> 0.5"}]
   end
 
   # Aliases are shortcut or tasks specific to the current project.

@@ -27,3 +27,14 @@ import_config "#{Mix.env}.exs"
 config :phoenix, :generators,
   migration: true,
   binary_id: false
+
+config :guardian, Guardian,
+  issuer: "reph2",
+  ttl: {30, :days},
+  secret_key: "Mqp7VxR2nxq0ghXeHuFfVW1spo5kIuqK7N126MIFxyfSSBnsqNER0rMp1SfyXsrE",
+  serializer: Reph.Guardian.Serializer,
+  hooks: GuardianDb
+
+config :guardian_db, GuardianDb,
+  repo: Reph.Repo,
+  schema_name: "tokens"

@@ -3,6 +3,7 @@ defmodule Reph.UserSocket do
 
   ## Channels
   channel "visitors", Reph.VisitorsChannel
+  channel "auth", Reph.AuthChannel
 
 
   ## Transports

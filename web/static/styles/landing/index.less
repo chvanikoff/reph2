@@ -72,3 +72,45 @@ form.link, form.button {
     border-bottom: 0;
   }
 }
+
+.form-auth {
+  margin: 0 auto;
+  max-width: 330px;
+  padding: 15px;
+  .form-auth-heading {
+    margin-bottom: 10px;
+  }
+  .checkbox {
+    font-weight: normal;
+    margin-bottom: 10px;
+  }
+  .form-control {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    position: relative;
+    &:focus {
+      z-index: 2;
+    }
+  }
+  .input-first {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: -1px;
+  }
+  .input-inner {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: -1px;
+  }
+  .input-last {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 10px;
+  }
+}
