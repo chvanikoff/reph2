@@ -1,5 +1,7 @@
 # RePh 2
 
+## Tutorial for the app can be found [here](https://medium.com/@chvanikoff/phoenix-react-love-story-reph-2-14a6dcadbbd0)
+
 ## [Demo](https://reph2.herokuapp.com/)
 (The demo is available 18h a day due to Heroku free nodes limitations, if you see `Application Error` message - this is the case)
 
