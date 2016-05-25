@@ -13,14 +13,22 @@ const plugins = {
   development: []
 }
 
+const URLLoader = (dir, mimetype, limit) => {
+  return "url?" + [
+    `limit=${limit}`,
+    `mimetype=${mimetype}`,
+    `name=${dir}/landing/[name].[ext]`
+  ].join("&");
+};
+
 module.exports = {
   entry: [
-    "./web/static/js/index.js",
-    "./web/static/styles/index.less"
+    "./web/static/js/landing/index.js",
+    "./web/static/styles/landing/index.less"
   ],
   output: {
     path: "./priv/static",
-    filename: "js/app.js",
+    filename: "js/landing.js",
     publicPath: "/",
   },
   module: {
@@ -37,46 +45,25 @@ module.exports = {
       loader: ExtractTextPlugin.extract("style", "css?localIdentName=[hash:base64]!postcss!less")
     }, {
       test: /\.png$/,
-      loader: "url?" + [
-        "limit=100000",
-        "mimetype=image/png"
-      ].join("&"),
+      loader: URLLoader("images", "image/png", 10000)
     }, {
       test: /\.gif$/,
-      loader: "url?" + [
-        "limit=100000",
-        "mimetype=image/gif"
-      ].join("&"),
+      loader: URLLoader("images", "image/gif", 10000)
     }, {
       test: /\.jpg$/,
-      loader: "file?name=images/[name].[ext]",
+      loader: URLLoader("images", "image/jpeg", 10000)
     }, {
       test: /\.(woff|woff2)$/,
-      loader: "url?" + [
-        "limit=10000",
-        "mimetype=application/font-woff",
-        "name=fonts/[name].[ext]"
-      ].join("&"),
+      loader: URLLoader("fonts", "application/x-font-woff", 10000)
     }, {
       test: /\.ttf$/,
-      loader: "url?" + [
-        "limit=10000",
-        "mimetype=application/octet-stream",
-        "name=fonts/[name].[ext]"
-      ].join("&"),
+      loader: URLLoader("fonts", "application/x-font-ttf", 10000)
     }, {
       test: /\.eot$/,
-      loader: "url?" + [
-        "limit=10000",
-        "name=fonts/[name].[ext]"
-      ].join("&"),
+      loader: URLLoader("fonts", "application/vnd.ms-fontobject", 10000)
     }, {
       test: /\.svg$/,
-      loader: "url?" + [
-        "limit=10000",
-        "mimetype=image/svg+xml",
-        "name=images/[name].[ext]"
-      ].join("&"),
+      loader: URLLoader("fonts", "image/svg+xml", 10000)
     }],
   },
   postcss: [
@@ -86,9 +73,9 @@ module.exports = {
   ],
   resolve: {
     extensions: ["", ".js", ".less", ".css"],
-    modulesDirectories: ["node_modules", __dirname + "/web/static/js"],
+    modulesDirectories: ["node_modules", __dirname + "/web/static/js/landing"],
     alias: {
-      styles: __dirname + "/web/static/styles"
+      styles: __dirname + "/web/static/styles/landing"
     }
   },
   plugins: [
@@ -99,7 +86,7 @@ module.exports = {
       },
     }),
     new Webpack.optimize.DedupePlugin(),
-    new ExtractTextPlugin("css/app.css"),
+    new ExtractTextPlugin("css/landing.css"),
     new CopyPlugin([{from: "./web/static/assets"}])
   ].concat(plugins[env])
 };

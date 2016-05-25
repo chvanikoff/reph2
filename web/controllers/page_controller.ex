@@ -10,10 +10,12 @@ defmodule Reph.PageController do
     }
 
     result = Reph.ReactIO.json_call!(%{
-      component: "./priv/static/server/js/reph.js",
+      component: "./priv/static/server/js/landing.js",
       props: props,
     })
 
-    render(conn, "index.html", html: result["html"], props: initial_state)
+    conn
+    |> put_layout("landing.html")
+    |> render("index.html", html: result["html"], props: initial_state)
   end
 end

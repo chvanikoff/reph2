@@ -1,11 +1,11 @@
 module.exports = {  
   entry: {
-    component: "./web/static/js/containers/index.js",
+    component: "./web/static/js/landing/containers/index.js",
   },
   output: {
     path: "./priv/static/server/js",
-    filename: "reph.js",
-    library: "reph",
+    filename: "landing.js",
+    library: "landing",
     libraryTarget: "commonjs2"
   },
   module: {
@@ -21,6 +21,6 @@ module.exports = {
   },
   resolve: {
     extensions: ["", ".js"],
-    modulesDirectories: ["node_modules", __dirname + "/web/static/js"]
+    modulesDirectories: ["node_modules", __dirname + "/web/static/js/landing"],
   }
 };
