@@ -9,18 +9,20 @@ defmodule Reph.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :app do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
+  scope "/app", Reph do
+    pipe_through [:browser, :app]
+    
+    get "/logout", AppController, :logout
+    get "/*path", AppController, :index
   end
 
   scope "/", Reph do
     pipe_through :browser # Use the default browser stack
-
-    forward "/", PageController, :index
+    get "/*path", PageController, :index
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", Reph do
-  #   pipe_through :api
-  # end
 end
